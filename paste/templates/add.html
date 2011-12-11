@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title%}{{ title }}{% endblock %}
+
+{% block content %}
+
+  {% if content %}
+    <nav id="nav">
+      <a href="/add/">NEW</a>
+      <a href="/{{ paste_id }}/raw">RAW</a>
+      <a href="/{{ paste_id }}/download">DOWNLOAD</a>
+    </nav>
+
+    <div id="output">
+      <table>
+        <tr>
+          <td>
+            {% for line in content %}
+              <a class="{% cycle 'row1' 'row2' %} linenr" href="#l{{ forloop.counter }}" name="l{{ forloop.counter }}">{{ forloop.counter }}</a>
+            {% endfor %}
+          </td>
+          <td style="width: 100%">
+            {% for line in content %}
+              <span class="{% cycle 'row1' 'row2' %}">{{ line|safe }}</span>
+            {% endfor %}
+          </td>
+        </tr>
+      </table>
+    </div>
+  {% endif %}
+
+  <form action="/add" method="post">
+    <div id="toolbar">
+      {% csrf_token %}
+      {{ paste_form.id }}
+      {{ paste_form.language.label_tag }}: {{ paste_form.language }}
+      <input class="button" type="submit" value="Paste" />
+    </div>
+
+    <div id="input">
+      {{ paste_from.error }}
+      {{ paste_form.content.error }}
+      {{ paste_form.content }}
+    </div>
+
+  </form>
+
+{% endblock %}

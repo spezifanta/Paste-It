@@ -1,0 +1,113 @@
+
+body {
+    background: #7f766b;
+    font-family: 'Trebuchet MS', Verdana, Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 95%;
+}
+
+
+#header {
+    background: #a5203b;
+    color: #f7f7f7;
+    margin: 0 0 1em 0;
+}
+
+#header a {
+    color: #fefefe;
+}
+
+#nav, #toolbar, #output  {
+    margin-bottom: 1em;
+}
+
+#nav a, .button {
+    background: #FFEEE7;
+    border: 1px solid #B5C0CF;
+    color: #000000;
+    display: inline-table;
+    font-size: 1.0em;
+    padding: 0.3em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    width: 7em;
+
+    border-radius: 0.4em;
+    -moz-border-radius: 0.4em;
+    -webkit-border-radius: 0.4em;
+    -khtml-border-radius: 0.4em;
+}
+
+#nav a:hover, .button:hover {
+    background: none repeat scroll 0 0 #A5203B;
+    border: 1px solid #111111;
+    color: #FFFFFF;
+}
+
+#toolbar {
+    font-size: 1.2em;
+}
+
+#input textarea {
+    border: 0;
+    background: transparent;
+    font-family: monospace;
+    font-size: 90%;
+    height: 500px;
+    line-height: 1.5em;
+    width: 100%;
+}
+
+#content, #input, #output{
+    background: #ffffff;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -khtml-border-radius: 1em;
+    padding: 1em;
+}
+
+#content {
+    background: #eeebe7;
+}
+
+#output table {
+    width: 100%;
+}
+
+#output td {
+    font-family: monospace;
+    font-size: 90%;
+    line-height: 1.5em;
+}
+
+.box {
+    border-radius: 0 0 1em 1em;
+    -moz-border-radius: 0 0 1em 1em;
+    -webkit-border-radius: 0 0 1em 1em;
+    -khtml-border-radius: 0 0 1em 1em;
+    box-shadow: 2px 2px 5px #333;
+    -moz-box-shadow: 2px 2px 5px #333;
+    -webkit-box-shadow: 2px 2px 5px #333;
+    -khtml-border-shadow: 2px 2px 5px #333;
+    padding: 1em;
+}
+
+.linenr {
+    padding: 0 1em;
+    text-align: right;
+}
+
+.row1 {
+    background: #f7f7f7;
+    height: 1.5em;
+    display:block;
+    white-space: pre-wrap;
+}
+
+.row2 {
+    background: #f0f0f0;
+    height: 1.5em;
+    display:block;
+    white-space: pre-wrap;
+}
