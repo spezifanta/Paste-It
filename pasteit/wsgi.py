@@ -15,7 +15,7 @@ framework.
 """
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pastit.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pasteit.settings")
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
@@ -26,3 +26,12 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+
+#import sys
+#path = '/var/www/kuhrti'
+#if path not in sys.path:
+#    sys.path.append(path)
+
+#path = '/var/www/kuhrti/kuhrti'
+#if path not in sys.path:
+#    sys.path.append(path)

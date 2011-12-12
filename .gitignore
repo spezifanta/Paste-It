@@ -2,3 +2,4 @@
 *.swp
 *.db
 pasteit/settings.py
+pasteit/wsgi.py

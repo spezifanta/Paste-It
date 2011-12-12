@@ -16,7 +16,7 @@ def add(request):
             paste = Paste.objects.latest()
             return redirect('/%s' % paste.pk)
     else:
-        form = PasteForm()
+        form = PasteForm(initial={'language': 'txt'}) # Default selection
 
     tpl_var = {'paste_form': form, 'title': 'Add'}
     tpl_var.update(csrf(request))
@@ -25,6 +25,7 @@ def add(request):
 def view(request, pk, output_type=None):
     paste = get_object_or_404(Paste, pk=pk)
 
+    # TODO: Add update
     # Update view counter
     #paste.view += 1
     #paste.save(update=True)
@@ -39,6 +40,7 @@ def view(request, pk, output_type=None):
             # TODO: add download size and mimetype
             response['Content-Disposition'] = 'attachment; filename=%s.%s' % (paste.id, paste.language.ext)
             return response
+        # Invalid output types
         else:
             return redirect('/%s' % paste.pk)
     else:

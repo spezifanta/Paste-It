@@ -6,6 +6,19 @@ body {
     width: 95%;
 }
 
+optgroup {
+    background: #444;
+    color: #f7f7f7;
+    font-size: 90%;
+    padding: 0.1em 0.2em;
+}
+
+option {
+    background: #f7f7f7;
+    color: #000;
+    font-size: 90%;
+    margin: 0 -0.2em;
+}
 
 #header {
     background: #a5203b;
@@ -26,7 +39,8 @@ body {
     border: 1px solid #B5C0CF;
     color: #000000;
     display: inline-table;
-    font-size: 1.0em;
+    font-size: 13px;
+    line-height: 16px;
     padding: 0.3em 0.5em;
     text-align: center;
     text-decoration: none;

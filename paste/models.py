@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import random
 import re
 import string
@@ -20,11 +22,24 @@ class Paste(models.Model):
 
     def get_title(self):
         title = ''
-        i = 0
-        while len(title) < 64 and i < len(self.content):
-            title += self.content[i:i + 1]
-            i += 1
-        return title.replace('\n', ' \\ ')
+        limit = 64
+        if len(self.content) <= limit:
+            title = self.content
+        else:
+            lines = self.content.split('\n')
+            for line in lines:
+                if not line.strip():
+                    continue
+                if line.startswith('#'):
+                    continue
+                if len(title) > limit:
+                    break
+                title += line + '\n'
+
+            title = title[:limit].rstrip()
+            title = title.replace('\n', ' \\ ') + '...'
+
+        return title
 
     def save(self, *args, **kwargs):
         # Update
@@ -72,18 +87,19 @@ class Paste(models.Model):
         super(Paste, self).save(*args, **kwargs)
 
     class Meta:
-        db_table = 'paste'
+        db_table = 'pastes'
         get_latest_by = 'created'
 
 class Language(models.Model):
     ext = models.SlugField(max_length=6, primary_key=True)
     name = models.CharField(max_length=32)
-    short = models.CharField(max_length=8, blank=True)
+    short = models.CharField(max_length=32, blank=True)
     mimetype = models.CharField(max_length=64, blank=True)
+    favorite = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        db_table = 'language'
+        db_table = 'languages'
         ordering = ['name']
