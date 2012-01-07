@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title%}API Documentation{% endblock %}
+
+
+{% block content %}
+
+<h1>API Documentation</h1>
+
+<p>Paste It provides an API allowing to paste content via HTTP. More
+soon...</p>
+
+<p>
+<strong>API Version:</strong> 01
+</p>
+
+<h2>Bash Script</h2>
+
+The real fun starts when using this little script:
+<pre class="code">
+
+#!/bin/bash
+
+URL="https://p.qrt.de"
+API_VERSION="01"
+NAME="$0"
+LANG="txt"
+
+if [ $# == 0 ]
+then
+    FILE="-"
+else
+    if [ -f "$1" ]
+    then
+        FILE="$1"
+    else
+        echo "Can't paste $1"
+        exit -1
+    fi
+fi
+
+API_URL="${URL}/api/v${API_VERSION}/add/"
+ID=$(curl -sk $API_URL -F "content=$(cat $FILE)" -F "language=${LANG}")
+/usr/bin/which xclip >& /dev/null
+if [ $? == 0 ]
+then
+    echo -n "${URL}/${ID}" | xclip && echo $(xclip -o)
+else
+    echo "${URL}/${ID}"
+fi
+
+</pre>
+
+<strong>Note:</strong> For more usability we recommend to install <em>xclip</em>.
+
+<h3>Example Usage</h3>
+
+Assuming you saved the script as ~/bin/pasteit and set chmod 700:
+<pre class="code">$ echo "foobar" | pasteit</pre>
+
+{% endblock %}
