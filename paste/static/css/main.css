@@ -23,11 +23,23 @@ option {
 #header {
     background: #a5203b;
     color: #f7f7f7;
+    font-family: 'Quantico', cursive;
+    font-size: 120%;
     margin: 0 0 1em 0;
 }
 
 #header a {
     color: #fefefe;
+}
+
+#subtitle {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 70%;
+    margin: 0 0 0 2em;
+}
+
+#header a {
+    text-decoration: none;
 }
 
 #nav, #toolbar, #output  {
@@ -95,6 +107,20 @@ option {
     line-height: 1.5em;
 }
 
+#footer {
+    clear: both;
+    margin: 2em;
+    font-size: 90%;
+    text-align: center;
+    
+}
+
+#footer nav a {
+    color: #fff;
+    margin: 0 1em 0 0;
+    text-decoration: none;
+}
+
 .box {
     border-radius: 0 0 1em 1em;
     -moz-border-radius: 0 0 1em 1em;
@@ -124,4 +150,19 @@ option {
     height: 1.5em;
     display:block;
     white-space: pre-wrap;
+}
+
+.code {
+    background: #e7e7e7;
+    border-radius: 1em;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -khtml-border-radius: 1em;
+    box-shadow: 2px 1px 5px #333;
+    -moz-box-shadow: 2px 1px 5px #333;
+    -webkit-box-shadow: 2px 1px 5px #333;
+    -khtml-border-shadow: 2px 1px 5px #333;
+    margin: 1em;
+    padding: 1em 1em 1em 1em;
+
 }

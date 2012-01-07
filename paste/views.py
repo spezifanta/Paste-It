@@ -59,3 +59,6 @@ def view(request, pk, output_type=None):
         }
         tpl_var.update(csrf(request))
         return render_to_response('add.html', tpl_var)
+
+def about(request):
+    return render_to_response('about.html', {})
