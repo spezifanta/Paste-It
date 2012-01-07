@@ -44,17 +44,16 @@ ID=$(curl -sk $API_URL -F "content=$(cat $FILE)" -F "language=${LANG}")
 /usr/bin/which xclip >& /dev/null
 if [ $? == 0 ]
 then
-    echo -n "${URL}/${ID}" | xclip && echo `xclip -o`
+    echo -n "${URL}/${ID}" | xclip && echo $(xclip -o)
 else
-    echo -n "${URL}/${ID}"
+    echo "${URL}/${ID}"
 fi
 
 </pre>
 
-<strong>Note:</strong> There is a high chance that you might have to install
-<em>xclip</em> first.
+<strong>Note:</strong> For more usability we recommend to install <em>xclip</em>.
 
-<h3>Example Useage</h3>
+<h3>Example Usage</h3>
 
 Assuming you saved the script as ~/bin/pasteit and set chmod 700:
 <pre class="code">$ echo "foobar" | pasteit</pre>
