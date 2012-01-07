@@ -1,0 +1,7 @@
+- API
+  - add dynamic urls for new API versions
+
+- Paste It
+  - fix line breaking
+  - add "copy to clipboard"
+  - pimp css style 
