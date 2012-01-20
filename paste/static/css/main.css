@@ -1,9 +1,18 @@
+@font-face {
+    font-family: Quantico;
+    src: url('/static/fonts/quantico.ttf');
+}
 
 body {
     background: #7f766b;
     font-family: 'Trebuchet MS', Verdana, Helvetica, sans-serif;
     margin: 0 auto;
     width: 95%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quantico', Helvetica, sans-serif;
+    font-weight: normal;
 }
 
 optgroup {
@@ -23,7 +32,7 @@ option {
 #header {
     background: #a5203b;
     color: #f7f7f7;
-    font-family: 'Quantico', cursive;
+    font-family: 'Quantico', Helvetica, sans-serif;
     font-size: 120%;
     margin: 0 0 1em 0;
 }
