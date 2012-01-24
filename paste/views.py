@@ -25,14 +25,15 @@ def add(request):
 def view(request, pk, output_type=None):
     paste = get_object_or_404(Paste, pk=pk)
 
+    # TODO: fix
     # Update view counter
-    paste.views += 1
-    paste.save()
+    #paste.views += 1
+    #paste.save()
 
     if output_type:
         response = HttpResponse(paste.content)
         response['Content-Type'] = 'text/plain; charset=utf-8' # Fix UTF-8
-        response['Conent-Length'] = len(paste.content)
+        response['Content-Length'] = len(paste.content)
 
         if output_type == 'raw':
             return response
@@ -48,21 +49,20 @@ def view(request, pk, output_type=None):
         else:
             return redirect('/%s' % paste.pk)
     else:
-        # Force line brakes
-        new_content = []
-        for line in paste.content.split('\n'):
-            while len(line) > 100:
-                pos = line.rfind(' ', 0, 100)
-                new_content.append('%s\n' % line[0:pos].strip())
-                line = line[pos:]
+        """ The normal HTML output """
+        lines = paste.content.split('\n')
 
-        new_content = ''.join(new_content)
-
+        # Syntax highlighter
         lexer = lexers.get_lexer_by_name(paste.language.short)
-        new_content = map(lambda line: highlight(line,
-                                                 lexer,
-                                                 HtmlFormatter(nowrap=True)),
-                          new_content.split('\n'))
+        lines = map(lambda line: highlight(line,
+                                           lexer,
+                                           HtmlFormatter(nowrap=True)), lines)
+
+        # Fix line break
+        lines = map(lambda line: line.replace('\n', '<br />'), lines)
+
+        # Fix indentation
+        new_content = map(lambda line: line.replace('  ', '&nbsp; '), lines)
 
         form = PasteForm(instance=paste)
         tpl_var = {

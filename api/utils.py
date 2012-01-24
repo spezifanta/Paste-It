@@ -1,6 +1,7 @@
 import os
 
 def is_valid_api(dir):
+    """ What qualifies an API """
     if dir.startswith('v') \
         and os.path.exists('api/%s/__init__.py' % dir) \
         and os.path.exists('api/%s/views.py' % dir) \

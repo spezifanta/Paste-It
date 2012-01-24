@@ -5,9 +5,14 @@
 
 body {
     background: #7f766b;
-    font-family: 'Trebuchet MS', Verdana, Helvetica, sans-serif;
+    font-family: Verdana, Helvetica, sans-serif;
+    line-height: 1.6em;
     margin: 0 auto;
     width: 95%;
+}
+
+fieldset {
+    border: 1px solid red;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,25 +60,27 @@ option {
     margin-bottom: 1em;
 }
 
-#nav a, .button {
+#nav a, .button, .button a {
     background: #FFEEE7;
     border: 1px solid #B5C0CF;
     color: #000000;
     display: inline-table;
     font-size: 13px;
-    line-height: 16px;
-    padding: 0.3em 0.5em;
+    height: 26px;
+    line-height: 24px;
+    padding: 0em 0.5em;
     text-align: center;
     text-decoration: none;
     width: 7em;
-
+    /*vertical-align:middle;*/
+/*padding-bottom: 2px;*/
     border-radius: 0.4em;
     -moz-border-radius: 0.4em;
     -webkit-border-radius: 0.4em;
     -khtml-border-radius: 0.4em;
 }
 
-#nav a:hover, .button:hover {
+#nav a:hover, .button:hover, .button a:hover {
     background: none repeat scroll 0 0 #A5203B;
     border: 1px solid #111111;
     color: #FFFFFF;
@@ -81,6 +88,22 @@ option {
 
 #toolbar {
     font-size: 1.2em;
+    vertical-align:middle;
+}
+
+select {
+    background: #fff;
+    border: 1px solid #B5C0CF;
+    font-size: 16px;
+    height: 26px;
+    line-height: 24px;
+    padding: 0;
+    width: 200px;
+
+    border-radius: 0.4em;
+    -moz-border-radius: 0.4em;
+    -webkit-border-radius: 0.4em;
+    -khtml-border-radius: 0.4em;
 }
 
 #input textarea {
@@ -91,6 +114,10 @@ option {
     height: 500px;
     line-height: 1.5em;
     width: 100%;
+}
+
+#input textarea:focus {
+  border: none;
 }
 
 #content, #input, #output{
@@ -105,15 +132,27 @@ option {
 #content {
     background: #eeebe7;
 }
-
-#output table {
-    width: 100%;
+#output {
+  overflow: auto;
 }
 
-#output td {
+#output ol {
+    background: #e5e5e5;   
+    color: red;
     font-family: monospace;
     font-size: 90%;
     line-height: 1.5em;
+    margin: 0;
+}
+
+#output ol li {
+    border-left: 2px solid #fff;
+    padding: 0 0.3em ;
+    white-space: 0;
+}
+
+#output ol li div {
+    position: relative;
 }
 
 #footer {
@@ -142,36 +181,33 @@ option {
     padding: 1em;
 }
 
-.linenr {
-    padding: 0 1em;
-    text-align: right;
-}
-
 .row1 {
     background: #f7f7f7;
-    height: 1.5em;
-    display:block;
-    white-space: pre-wrap;
+    color: #000;
 }
 
 .row2 {
     background: #f0f0f0;
-    height: 1.5em;
-    display:block;
-    white-space: pre-wrap;
+    color: #000;
 }
 
 .code {
-    background: #e7e7e7;
-    border-radius: 1em;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    -khtml-border-radius: 1em;
-    box-shadow: 2px 1px 5px #333;
-    -moz-box-shadow: 2px 1px 5px #333;
-    -webkit-box-shadow: 2px 1px 5px #333;
-    -khtml-border-shadow: 2px 1px 5px #333;
+    background: #e5e5e5;
+    border-radius: 0.4em;
+    -moz-border-radius: 0.4em;
+    -webkit-border-radius: 0.4em;
+    -khtml-border-radius: 0.4em;
+    box-shadow: 2px 1px 1px #999;
+    -moz-box-shadow: 2px 1px 1px #999;
+    -webkit-box-shadow: 2px 1px 1px #999;
+    -khtml-border-shadow: 2px 1px 1px #999;
     margin: 1em;
     padding: 1em 1em 1em 1em;
 
+}
+
+.anchor {
+    margin: 0;
+    padding: 0;
+    display:none;
 }

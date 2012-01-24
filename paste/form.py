@@ -9,6 +9,7 @@ class PasteForm(ModelForm):
         self.fields['language'].empty_label = None
         self.fields['language'].choices = [('Default', [(lang.ext, lang) for lang in Language.objects.filter(favorite=True)])]
         self.fields['language'].choices.extend([('All', [(lang.ext, lang) for lang in Language.objects.all()])])
+        self.fields['content'].widget_attrs = {'placeholder': 'Search'}
 
     class Meta:
         model = Paste

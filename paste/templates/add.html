@@ -12,24 +12,18 @@
     </nav>
 
     <div id="output">
-      <table>
-        <tr>
-          <td>
-            {% for line in content %}
-              <a class="{% cycle 'row1' 'row2' %} linenr" href="#l{{ forloop.counter }}" name="l{{ forloop.counter }}">{{ forloop.counter }}</a>
-            {% endfor %}
-          </td>
-          <td style="width: 100%">
-            {% for line in content %}
-              <span class="{% cycle 'row1' 'row2' %}">{{ line|safe }}</span>
-            {% endfor %}
-          </td>
-        </tr>
-      </table>
+      <ol>
+        {% for line in content %}
+          <li class="{% cycle 'row1' 'row2' %}">
+            {{ line|safe }}
+          </li>
+        {% endfor %}
+      </ol>
     </div>
   {% endif %}
 
   <form action="/add" method="post">
+
     <div id="toolbar">
       {% csrf_token %}
       {{ paste_form.id }}

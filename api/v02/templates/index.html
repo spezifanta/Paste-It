@@ -17,13 +17,19 @@
 
 <h2>Documentation</h2>
 
-<p>To access the API use <kbd>http://p.qrt.de/api/v<span
-style="color:#dd0000">$VERSION</span></kbd> where <em>$VERSION</em> is the
+<p>To access the API use <kbd>https://p.qrt.de/api/v<span
+style="color:#dd0000">VERSION</span></kbd> where <em>VERSION</em> is the
 current API version.</p>
+
+<h3>Example</h3>
+This example will create a new paste with Python syntax highlighting turned on:
+<pre class="code">curl -s https://p.qrt.de/api/v02/add -F content='foobar' -F language='py'</pre>
 
 <h3>Pasting content</h3>
 Usage:
 <pre class="code">POST  /add</pre>
+
+Return: a unique access string for the paste.
 
 <h4>Required parameter:</h4>
 <p><strong>content</strong><br/>Contains the actual stuff, which shall be pasted.</p>
@@ -49,9 +55,7 @@ First column represents valid file extensions, which may be used for the
 <h2>Bash Script</h2>
 
 The real fun starts when using this little script:
-<pre class="code">
-
-#!/bin/bash
+<pre class="code">#!/bin/bash
 
 URL="https://p.qrt.de"
 API_VERSION="02"
@@ -72,22 +76,23 @@ else
 fi
 
 API_URL="${URL}/api/v${API_VERSION}/add/"
-ID=$(curl -sk $API_URL -F "content=$(cat $FILE)" -F "language=${LANG}")
+ID=$(curl -s $API_URL -F "content=$(cat $FILE)" -F "language=${LANG}")
 /usr/bin/which xclip >& /dev/null
 if [ $? == 0 ]
 then
     echo -n "${URL}/${ID}" | xclip && echo $(xclip -o)
 else
     echo "${URL}/${ID}"
-fi
-
-</pre>
+fi</pre>
 
 <strong>Note:</strong> For more usability we recommend to install <em>xclip</em>.
 
-<h3>Example Usage</h3>
+<h3>Install</h3>
+<pre class="code">$ cd ~/bin
+$ curl -L https://p.qrt.de/7iIdag/ > pasteit
+$ chmod 700 pasteit</pre>
 
-Assuming you saved the script as ~/bin/pasteit and set chmod 700:
+<h3>Example Usage</h3>
 <pre class="code">$ echo "foobar" | pasteit</pre>
 
 {% endblock %}

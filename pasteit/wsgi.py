@@ -27,11 +27,11 @@ application = get_wsgi_application()
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
 
-#import sys
-#path = '/var/www/kuhrti'
-#if path not in sys.path:
-#    sys.path.append(path)
+import sys
+path = '/var/www/qrt/htdocs/p'
+if path not in sys.path:
+    sys.path.append(path)
 
-#path = '/var/www/kuhrti/kuhrti'
-#if path not in sys.path:
-#    sys.path.append(path)
+path = '/var/www/qrt/htdocs/p/pasteit'
+if path not in sys.path:
+    sys.path.append(path)

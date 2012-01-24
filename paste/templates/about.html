@@ -6,12 +6,36 @@
 
 <h1>About</h1>
 
-<p>Paste IT is a private paste bin service. It's open source and can be found at
-<a href="https://github.com/spezifanta/Paste-It">GitHub</a>. Feel free to
-contribute.</p>
+<p>Paste IT is a private paste bin service. It is an open source (MIT license)
+project and can be found at <a href="https://github.com/spezifanta/Paste-It">GitHub</a>.
+Feel free to contribute, report bugs or give feedback.</p>
+
+<h3>Idea</h3>
+<p>
+There are a lot of paste bins on the internet but none suited my idea of having
+a plain, clean, fast and most importantly secure paste bin. And as an Linux user
+I need and want to paste and grep via command line. No <kbd>CTRL+C</kbd>
+<kbd>CTRL+V</kbd> shit. So an <a href="/api">API</a>
+was needed as well.
+</p>
+
+<h3>Features</h3>
+<ul>
+  <li><strong>SSL</strong></li>
+  <li>Privacy: If you don't share the returning paste URL, nobody will read your paste.
+  Not even Google. Well, as least as long as no one leaks our database :/</li>
+  <li>Infinite lifetime: If you don't add a expiry date, your paste will live
+  long. Very long. But no guarantee. Sorry.</li>
+  <li>No external URLs, Ads or fancy social stuff.</li>
+  <li>No logging.</li>
+</ul>
+
+<h3>Gernal</h3>
+<p>Paste It uses <a href="http://www.python.org">Python</a>, <a
+href="http://www.djangoproject.com">Django</a> and <a
+href="http://pygments.org">Pygments</a>.</p>
 
 <h2>Credits</h2>
-
 <ul>
   <li>Inglewood</li>
   <li>spezi|Cola</li>
@@ -20,9 +44,5 @@ contribute.</p>
   <li>adrian_broher</li>
 </ul>
 
-<h2>Gernal</h2>
-<p>Paste It uses <a href="http://www.python.org">Python</a>, <a
-href="http://www.djangoproject.com">Django</a> and <a
-href="http://pygments.org">Pygments</a>.</p>
 
 {% endblock %}

@@ -13,6 +13,7 @@ class Paste(models.Model):
     content = models.TextField('Content')
     #hl_lines = models.TextField()
     views = models.PositiveIntegerField(blank=True, default=0)
+    expire = models.PositiveIntegerField(blank=True, default=0)
     last_paste = models.SlugField(max_length=6, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -77,10 +78,10 @@ class Paste(models.Model):
                 indentation_length = 0
                 new_content.append(line)
 
-        # Strip unnecessary whitespace on the left and all on the right
+        # Strip unnecessary whitespaces on the left and all on the right
         new_content = map(lambda line: line[indentation_length:].rstrip() + '\n', new_content)
 
-        # Glue all back together and remove all whitespace at the end
+        # Glue all back together and remove all whitespaces at the end
         self.content = ''.join(new_content).rstrip()
 
         # Call the "real" save method
@@ -89,6 +90,7 @@ class Paste(models.Model):
     class Meta:
         db_table = 'pastes'
         get_latest_by = 'created'
+        ordering = ['created']
 
 class Language(models.Model):
     ext = models.SlugField(max_length=6, primary_key=True)
